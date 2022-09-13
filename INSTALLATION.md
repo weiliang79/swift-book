@@ -6,7 +6,6 @@
 -  `cp .env.example .env`
 - `php artisan key:generate`
 - create database swift_book, check database config `notepad.exe .env`
-- `composer install`
 - `npm install`
 
 ## Running
