@@ -5,7 +5,7 @@
 - `composer install`
 -  `cp .env.example .env`
 - `php artisan key:generate`
-- edit MySQL server configuration on `.env` file
+- create database swift_book, check database config `notepad.exe .env`
 - `composer install`
 - `npm install`
 
