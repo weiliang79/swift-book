@@ -2,7 +2,7 @@
 
 - `git clone https://github.com/weiliang79/swift-book.git`
 - `cd swift-book`
-- - `composer install`
+- `composer install`
 - `php artisan key:generate`
 - edit MySQL server configuration on `.env` file
 - `composer install`
