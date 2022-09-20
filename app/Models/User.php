@@ -47,4 +47,12 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::class);
     }
+
+    public function isAdmin(){
+        return $this->role->id == Role::ROLE_ADMIN;
+    }
+
+    public function isUser(){
+        return $this->role->id == Role::ROLE_USER;
+    }
 }
