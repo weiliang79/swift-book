@@ -1,11 +1,26 @@
+// bootstrap
+import './bootstrap';
+
+// jQuery
+import jQuery from 'jquery';
+window.$ = jQuery;
+
+// DataTable
+import DataTable from 'datatables.net-bs5';
+DataTable(window, window.$);
+
+window.addEventListener('DOMContentLoaded', event => {
+
+      $('.dataTable').DataTable();
+
+});
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
+//import { createApp } from 'vue';
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,10 +28,10 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+// const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+// import ExampleComponent from './components/ExampleComponent.vue';
+// app.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,4 +51,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
+//app.mount('#app');
