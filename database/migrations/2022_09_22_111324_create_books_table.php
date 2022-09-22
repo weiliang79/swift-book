@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('isbn');
             $table->decimal('price');
             $table->integer('quantity');
+            $table->string('image_path')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
