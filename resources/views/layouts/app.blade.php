@@ -39,7 +39,11 @@
 
                         @can('isAdmin')
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Book') }}</a>
+                            <a class="nav-link" href="{{ route('admin.home') }}">{{ __('Home') }}</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.books') }}">{{ __('Book') }}</a>
                         </li>
 
                         <li class="nav-item">
@@ -93,6 +97,12 @@
             @yield('content')
         </main>
     </div>
+
+    @if(Session::get('success'))
+    <script>
+        window.alert('{{ Session::pull("success") }}');
+    </script>
+    @endif
 </body>
 
 </html>
