@@ -16,4 +16,12 @@ class Book extends Model
         'quantity',
         'image_path',
     ];
+
+    /**
+     * The books that belong to the cart.
+     */
+    public function books()
+    {
+        return $this->belongsToMany(Cart::class)->withPivot('quantity');
+    }
 }

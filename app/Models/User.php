@@ -55,4 +55,12 @@ class User extends Authenticatable
     public function isUser(){
         return $this->role->id == Role::ROLE_USER;
     }
+
+    /**
+     * Get the cart associated with the user.
+     */
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }
