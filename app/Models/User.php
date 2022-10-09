@@ -63,4 +63,12 @@ class User extends Authenticatable
     {
         return $this->hasMany(Cart::class);
     }
+
+    /**
+     * Get the order associated with the user.
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

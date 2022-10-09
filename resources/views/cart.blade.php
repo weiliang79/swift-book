@@ -39,7 +39,8 @@
                                 <div style="width: 2rem"></div>
 
                                 {{-- delete btn --}}
-                                <a style="background: none; border: none; padding: 0" href="{{ url("/cart/delete/{$cart->book->id}") }}">
+                                <a style="background: none; border: none; padding: 0"
+                                    href="{{ url("/cart/delete/{$cart->book->id}") }}">
                                     <?xml version="1.0" encoding="UTF-8"?><svg width="24" height="24"
                                         viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M9 10V44H39V10H9Z" fill="none" stroke="#333" stroke-width="4"
@@ -64,22 +65,27 @@
             <div style="margin-left: 1.7rem"></div>
 
             {{-- right card --}}
-            <div class="card" style="width: 25rem; align-self: flex-start">
-                <div class="card-header py-3">
-                    <h5 class="mb-0">Order Summary</h5>
-                </div>
-                <div class="card-body fs-5" id="summary-body">
-                    <p class="d-flex justify-content-between">Subtotal (3 books)
-                        <span>RM {{number_format($summary[0], 2, '.', '')}}</span>
-                    </p>
-                    <p class="d-flex justify-content-between">Shipping Fee
-                        <span>RM {{number_format($summary[1], 2, '.', '')}}</span>
-                    </p>
-                    <hr>
-                    <strong class="d-flex justify-content-between">Total
-                        <span>RM {{number_format($summary[2], 2, '.', '')}}</span>
-                    </strong>
+            <div>
+                <div class="card" style="width: 25rem; align-self: flex-start">
+                    <div class="card-header py-3">
+                        <h5 class="mb-0">Order Summary</h5>
+                    </div>
+                    <div class="card-body fs-5" id="summary-body">
+                        <p class="d-flex justify-content-between">Subtotal (3 books)
+                            <span>RM {{ number_format($summary[0], 2, '.', '') }}</span>
+                        </p>
+                        <p class="d-flex justify-content-between">Shipping Fee
+                            <span>RM {{ number_format($summary[1], 2, '.', '') }}</span>
+                        </p>
+                        <hr>
+                        <strong class="d-flex justify-content-between">Total
+                            <span>RM {{ number_format($summary[2], 2, '.', '') }}</span>
+                        </strong>
 
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <a class="w-100 btn btn-primary btn-lg" href="{{ url('/checkout') }}">Checkout</a>
                 </div>
             </div>
         </section>

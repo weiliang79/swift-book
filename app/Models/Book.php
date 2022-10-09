@@ -24,4 +24,12 @@ class Book extends Model
     {
         return $this->belongsToMany(Cart::class)->withPivot('quantity');
     }
+
+    /**
+     * The books that belong to the cart.
+     */
+    public function orders()
+    {
+        return $this->belongsToMany(Order::class, 'order_detail');
+    }
 }

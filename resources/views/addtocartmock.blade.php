@@ -12,13 +12,13 @@
     <button id="update-cart">update cart</button>
     <script>
         document.getElementById('add-cart').onclick = async () => {
-            let ace = await axios.post('http://127.0.0.1/swift-book/public/cart/1')
+            let ace = await axios.post('{{ route("cart.add", ["book_id" => 1]) }}')
             console.log(ace)
-            axios.post('http://127.0.0.1/swift-book/public/cart/2')
-            axios.post('http://127.0.0.1/swift-book/public/cart/3')
-            axios.post('http://127.0.0.1/swift-book/public/cart/4')
-            axios.post('http://127.0.0.1/swift-book/public/cart/5')
-            axios.post('http://127.0.0.1/swift-book/public/cart/6')
+            axios.post('{{ route("cart.add", ["book_id" => 2]) }}')
+            axios.post('{{ route("cart.add", ["book_id" => 3]) }}')
+            axios.post('{{ route("cart.add", ["book_id" => 4]) }}')
+            axios.post('{{ route("cart.add", ["book_id" => 5]) }}')
+            axios.post('{{ route("cart.add", ["book_id" => 6]) }}')
         }
 
         document.getElementById('update-cart').onclick = async () => {

@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -28,17 +29,20 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('cartmock', function() {
     return view('addtocartmock');
-});
+})->name('cartmock');
 
 // user routes
 Route::group(['middleware' => ['can:isUser']], function () {
-    // cart routes
-    Route::get('/cart', [CartController::class, 'index']);
-    Route::post('/cart/{book_id}', [CartController::class, 'add']); // add to cart button use this
-    Route::put('/cart/{book_id}/{quantity}', [CartController::class, 'update']);
-    Route::get('/cart/delete/{book_id}', [CartController::class, 'remove']);
 
-    //checkout clear cart and move data to order model
+    Route::get('/cart', [CartController::class, 'index']);
+    Route::post('/cart/{book_id}', [CartController::class, 'add'])->name('cart.add'); // add to cart button use this
+    Route::put('/cart/{book_id}/{quantity}', [CartController::class, 'update'])->name('cart.update');
+    Route::get('/cart/delete/{book_id}', [CartController::class, 'remove'])->name('cart.remove');
+
+    Route::get('/checkout', [CheckoutController::class, 'index']);
+    Route::post('/checkout/{order}', [CheckoutController::class, 'store']);
+    Route::get('/checkout/{order}', [CheckoutController::class, 'payment']);
+    Route::post('/checkout/pay/{order}', [CheckoutController::class, 'pay']);
 });
 // admin routes
 Route::group(['middleware' => ['can:isAdmin']], function () {
