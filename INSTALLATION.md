@@ -7,6 +7,7 @@
 - `php artisan key:generate`
 - create database swift_book, check database config `notepad.exe .env`
 - `npm install`
+- symbolic link `php artisan storage:link`
 
 ## Running
 
