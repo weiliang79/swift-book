@@ -3,6 +3,7 @@
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +44,8 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::post('/checkout/{order}', [CheckoutController::class, 'store']);
     Route::get('/checkout/{order}', [CheckoutController::class, 'payment']);
     Route::post('/checkout/pay/{order}', [CheckoutController::class, 'pay']);
+    
+    Route::get('/catalog',[CatalogController::class, 'index']);
 });
 // admin routes
 Route::group(['middleware' => ['can:isAdmin']], function () {
