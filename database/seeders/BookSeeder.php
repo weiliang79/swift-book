@@ -69,5 +69,54 @@ class BookSeeder extends Seeder
             'quantity' => '8',
             'image_path' => 'images/The Adventures of Paddington Hide-and-Seek.jpg'
         ]);
+        Book::create([
+            'name' => "Where\'s Bing A lift-the-flap book",
+            'isbn' => '9780008497804',
+            'price' => '45.0',
+            'quantity' => '9',
+            'image_path' => 'images/Where\'s Bing A lift-the-flap book.jpg'
+        ]);
+        Book::create([
+            'name' => 'Spot Can Count',
+            'isbn' => '9780241517505',
+            'price' => '44.0',
+            'quantity' => '4',
+            'image_path' => 'images/Spot Can Count.jpg'
+        ]);
+        Book::create([
+            'name' => 'Hilda and the White Woff (Netflix Tie In)',
+            'isbn' => '9781838740290',
+            'price' => '40.9',
+            'quantity' => '12',
+            'image_path' => 'images/Hilda and the White Woff (Netflix Tie In).jpg'
+        ]);
+        Book::create([
+            'name' => 'Hilda and the Time Worm (Netflix Tie In)',
+            'isbn' => '9781912497102',
+            'price' => '40.0',
+            'quantity' => '22',
+            'image_path' => 'images/Hilda and the Time Worm (Netflix Tie In).jpg'
+        ]);
+        Book::create([
+            'name' => 'Hilda and the Ghost Ship (Netflix Tie In)',
+            'isbn' => '9781838740283',
+            'price' => '40.0',
+            'quantity' => '8',
+            'image_path' => 'images/Hilda and the Ghost Ship (Netflix Tie In).jpg'
+        ]);
+        Book::create([
+            'name' => "Geronimo Stilton #4: The Graphic Novel The Last Ride at Luna Park",
+            'isbn' => "9781338729399",
+            'price' => '34.32',
+            'quantity' => '10',
+            'image_path' => 'images/Geronimo Stilton 4 The Graphic Novel The Last Ride at Luna Park.jpg'
+        ]);
+        Book::create([
+            'name' => 'Why We Need Water (Waffles + Mochi)',
+            'isbn' => '9780593484364',
+            'price' => '28.5',
+            'quantity' => '3',
+            'image_path' => 'images/Why We Need Water (Waffles + Mochi).jpg'
+        ]);
     }
 }
