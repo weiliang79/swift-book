@@ -8,8 +8,8 @@ window.increment = increment
 async function decrement(element) {
     // when smaller than 1 dont handle
     const parent = element.parentElement
-    const input = parent.getElementsByTagName("input")[0]
-    const uiQuantity = parseInt(input.value)
+    const p = parent.getElementsByTagName("p")[0]
+    const uiQuantity = parseInt(p.innerText)
     const changingQuantity = uiQuantity - 1
     if (changingQuantity < 1) {
         return
@@ -18,7 +18,7 @@ async function decrement(element) {
     try {
         const res = await axios.put(`http://127.0.0.1/swift-book/public/cart/${bookid}/${changingQuantity}`)
         // update UI
-        input.value = changingQuantity
+        p.innerText = changingQuantity
         refreshOrderSummary(res.data.summary)
     } catch (e) {
         console.log(e)
@@ -32,14 +32,14 @@ async function decrement(element) {
  */
 async function increment(element) {
     const parent = element.parentElement
-    const input = parent.getElementsByTagName("input")[0]
-    const uiQuantity = parseInt(input.value)
+    const p = parent.getElementsByTagName("p")[0]
+    const uiQuantity = parseInt(p.innerText)
     const changingQuantity = uiQuantity + 1
     const bookid = parent.dataset.bookid
     try {
         const res = await axios.put(`http://127.0.0.1/swift-book/public/cart/${bookid}/${changingQuantity}`)
         // update UI
-        input.value = changingQuantity.toString()
+        p.innerText = changingQuantity.toString()
         refreshOrderSummary(res.data.summary)
     } catch (e) {
         console.log(e)

@@ -30,9 +30,9 @@
 
                                 <button style="width: 2rem; height: 2rem; border: none;"
                                     onclick="decrement(this)">-</button>
-                                <input type="text" class="text-center" style="width: 3rem; border: none"
-                                    value="{{ $cart->quantity }}" min="1" max="5" autocomplete="off">
-                                {{-- use type text because type number adds weird spacing for up down icon --}}
+                                <p type="text" class="text-center" style="width: 3rem;margin: auto">
+                                    {{ $cart->quantity }}
+                                </p>
                                 <button style="width: 2rem; height: 2rem; border: none;"
                                     onclick="increment(this)">+</button>
 
@@ -85,7 +85,9 @@
                     </div>
                 </div>
                 <div class="mt-4">
-                    <a class="w-100 btn btn-primary btn-lg" href="{{ url('/checkout') }}">Checkout</a>
+                    @if (!$carts->isEmpty())
+                        <a class="w-100 btn btn-primary btn-lg" href="{{ url('/checkout') }}">Checkout</a>
+                    @endif
                 </div>
             </div>
         </section>
