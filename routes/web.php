@@ -40,6 +40,7 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::post('/cart/{book_id}', [CartController::class, 'add'])->name('cart.add'); // add to cart button use this
     Route::put('/cart/{book_id}/{quantity}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/cart/delete/{book_id}', [CartController::class, 'remove'])->name('cart.remove');
+    Route::get('/book/search', [BookController::class,'search'] )->name('book.search');
 
     Route::get('/checkout', [CheckoutController::class, 'index']);
     Route::post('/checkout/{order}', [CheckoutController::class, 'store']);
