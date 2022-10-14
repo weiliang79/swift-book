@@ -1,13 +1,13 @@
 <template>
-  <div class="input-group my-3">
+  <div class="input-group my-3" style="position: relative;">
     <input v-model="query" type="text" class="form-control" name="query" placeholder="Search Book"
       aria-label="Search Book" aria-describedby="basic-addon2">
     <button class="input-group-text btn btn-primary" id="basic-addon2">
       <span class="material-symbols-outlined">search</span>
-
+      
     </button>
   </div>
-  <ul v-if="results.length > 0 && query">
+  <ul v-if="results.length > 0 && query" style="position: absolute; z-index: 20; background-color:white; width: 40rem;" >
     <li v-for="result in results.slice(0,10)" :key="result.id">
       <a :href="result.url">
         <div v-text="result.title"></div>
