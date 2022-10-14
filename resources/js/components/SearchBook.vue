@@ -1,6 +1,6 @@
 <template>
   <div class="input-group my-3">
-    <input v-model="query" type="text" class="form-control" name="key" placeholder="Search Book"
+    <input v-model="query" type="text" class="form-control" name="query" placeholder="Search Book"
       aria-label="Search Book" aria-describedby="basic-addon2">
     <button class="input-group-text btn btn-primary" id="basic-addon2">
       <span class="material-symbols-outlined">search</span>

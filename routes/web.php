@@ -41,6 +41,8 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::put('/cart/{book_id}/{quantity}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/cart/delete/{book_id}', [CartController::class, 'remove'])->name('cart.remove');
     Route::get('/book/search', [BookController::class,'search'] )->name('book.search');
+    Route::get('/book/find', [BookController::class,'find'] )->name('book.find');
+    Route::get('/book/detail', [BookController::class,'find'] )->name('book.detail');
 
     Route::get('/checkout', [CheckoutController::class, 'index']);
     Route::post('/checkout/{order}', [CheckoutController::class, 'store']);

@@ -111,4 +111,9 @@ class BookController extends Controller
 
         return response()->json($results);
     }
+
+    public function find(Request $request)
+    {
+        return view('book.search', ['books' => Book::where('name', 'like', '%' . $request->query('query') . '%')->get()]);
+    }
 }

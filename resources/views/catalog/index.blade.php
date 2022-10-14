@@ -7,7 +7,7 @@
       <div class="row">
             <div class="col">
                   <div class="d-flex justify-content-center">
-                        <form action="search.php" method="get" style="width: 100%; max-width: 40rem">
+                        <form action="{{ route('book.find') }}" method="get" style="width: 100%; max-width: 40rem">
 
                               <search-book></search-book>
 
