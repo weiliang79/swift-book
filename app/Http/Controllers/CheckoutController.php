@@ -49,7 +49,7 @@ class CheckoutController extends Controller
 
         // pending
         if ($latestOrder->info) {
-            return redirect("/checkout/$latestOrder->id");
+            return redirect()->route('checkout.pay', ['order' => $latestOrder->id]);
         } else {
             $order = $latestOrder;
             $summary = $this->getSummary($user);
@@ -78,7 +78,7 @@ class CheckoutController extends Controller
             'rememberAddress' => $request->rememberAddress,
         ]);
         $order->info()->save($orderInfo);
-        return redirect("/checkout/$order->id");
+        return redirect("/checkout/pay/$order->id");
     }
 
     /**
@@ -86,8 +86,10 @@ class CheckoutController extends Controller
      */
     public function payment(Order $order)
     {
-        if ($order->status != 'pending')
-            return abort(404, 'payment already submitted, check payment history');
+        
+        //dd($order->status);
+        if ($order->status == 'success' || $order->status == 'expired')
+            return abort(400, 'payment already submitted, check payment history');
         $summary = $this->getSummary(Auth::user());
         return view('checkout.payment', ['order' => $order, 'summary' => $summary]);
     }
@@ -97,13 +99,17 @@ class CheckoutController extends Controller
      */
     public function pay(StorePaymentRequest $request, Order $order)
     {
-        if ($order->status != 'pending')
-            return abort(404, 'payment already submitted, check payment history');
         $user = User::find(Auth::user()->id);
-        $user->carts->each(function ($cart, $key) use ($order) {
-            $order->books()->attach($cart->book->id, ['quantity' => $cart->quantity]);
-            $cart->delete();
-        });
+        // only allow pending or fail status
+        if ($order->status == 'success' || $order->status == 'expired')
+            return abort(400);
+        // only move cart items when pending
+        if ($order->status == 'pending') {
+            $user->carts->each(function ($cart, $key) use ($order) {
+                $order->books()->attach($cart->book->id, ['quantity' => $cart->quantity]);
+                $cart->delete();
+            });
+        }
         if ($this->callFakePaymentApi($request)) {
             $order->status = 'success';
             $order->save();

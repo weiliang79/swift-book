@@ -18,9 +18,9 @@
                             <br>
                             Thank you for shopping with us!
                         </p>
-                        <a href="/home" class="btn btn-primary">Go to catalog</a>
+                        <a href="{{ route('catalog') }}" class="btn btn-primary">Go to catalog</a>
                         {{-- TODO: fix this link --}}
-                        <a href="/home" class="btn btn-primary">Go to payment history</a>
+                        <a href="{{ route('order_history') }}" class="btn btn-primary">Go to payment history</a>
                     </div>
                 </div>
             </div>

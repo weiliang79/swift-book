@@ -7,6 +7,7 @@ use App\Http\Controllers\CatalogController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -43,11 +44,13 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::get('/book/detail', [BookController::class,'find'] )->name('book.detail');
 
     Route::get('/checkout', [CheckoutController::class, 'index']);
-    Route::post('/checkout/{order}', [CheckoutController::class, 'store']);
-    Route::get('/checkout/{order}', [CheckoutController::class, 'payment']);
+    Route::post('/checkout/{order}', [CheckoutController::class, 'store'])->name('checkout.store');
+    Route::get('/checkout/pay/{order}', [CheckoutController::class, 'payment'])->name('checkout.pay');
     Route::post('/checkout/pay/{order}', [CheckoutController::class, 'pay']);
 
     Route::get('/order_history', [OrderController::class, 'index'])->name('order_history');
+
+    Route::get('/rating/{book_id}', [RatingController::class, 'index'])->name('rating');
 
 });
 

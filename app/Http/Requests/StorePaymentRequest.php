@@ -27,7 +27,7 @@ class StorePaymentRequest extends FormRequest
             'cc_name' => 'required|max:255',
             'cc_number' => 'required|numeric|digits:16',
             'cc_expiration_month' => 'required|numeric|digits:2|min:1|max:31',
-            'cc_expiration_year' => 'required|numeric|digits:4|min:2021|max:2029',
+            'cc_expiration_year' => 'required|numeric|digits:4|min:2022|max:2029',
             'cc_cvv' => 'required|digits:3',
         ];
     }

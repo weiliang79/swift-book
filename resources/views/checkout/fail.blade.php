@@ -18,7 +18,7 @@
                             Please follow the link below to try again
                         </p>
                         {{-- TODO: fix this link --}}
-                        <a href="/home" class="btn btn-primary">Go to payment history</a>
+                        <a href="{{ route('order_history') }}" class="btn btn-primary">Go to payment history</a>
                     </div>
                 </div>
             </div>
