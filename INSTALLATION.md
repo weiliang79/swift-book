@@ -26,3 +26,4 @@ Or using XAMPP
 
 Vite
 - `npm run build`
+- symbolic link php artisan storage:link
