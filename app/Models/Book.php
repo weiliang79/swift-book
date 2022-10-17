@@ -35,6 +35,11 @@ class Book extends Model implements Searchable
         return $this->belongsToMany(Order::class, 'order_detail');
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function getSearchResult(): SearchResult
     {
        $url = route('book.detail', $this->id);

@@ -13,11 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('ratings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users');
-            $table->enum('status', ['pending', 'success', 'fail', 'expired']);
+            $table->foreignId('user_id');
+            $table->foreignId('book_id');
+            $table->tinyInteger('rating');
+            $table->text('comment')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade');
+            $table->foreign('book_id')->on('books')->references('id')->onDelete('cascade');
         });
     }
 
@@ -28,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('orders');
+        Schema::dropIfExists('ratings');
     }
 };
