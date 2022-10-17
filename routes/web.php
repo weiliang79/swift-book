@@ -21,22 +21,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
 Route::get('cartmock', function() {
     return view('addtocartmock');
 })->name('cartmock');
 
+Auth::routes();
+
+Route::get('/',[CatalogController::class, 'index'])->name('catalog');
+
 // user routes
 Route::group(['middleware' => ['can:isUser']], function () {
 
-    Route::get('/cart', [CartController::class, 'index']);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/cart', [CartController::class, 'index'])->name('cart');
     Route::post('/cart/{book_id}', [CartController::class, 'add'])->name('cart.add'); // add to cart button use this
     Route::put('/cart/{book_id}/{quantity}', [CartController::class, 'update'])->name('cart.update');
     Route::get('/cart/delete/{book_id}', [CartController::class, 'remove'])->name('cart.remove');
@@ -48,9 +46,9 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::post('/checkout/{order}', [CheckoutController::class, 'store']);
     Route::get('/checkout/{order}', [CheckoutController::class, 'payment']);
     Route::post('/checkout/pay/{order}', [CheckoutController::class, 'pay']);
-    
-    Route::get('/catalog',[CatalogController::class, 'index'])->name('catalog');
+
 });
+
 // admin routes
 Route::group(['middleware' => ['can:isAdmin']], function () {
 

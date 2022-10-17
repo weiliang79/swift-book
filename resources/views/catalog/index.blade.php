@@ -4,6 +4,7 @@
 
 <div class="container">
 
+    @auth()
       <div class="row">
             <div class="col">
                   <div class="d-flex justify-content-center">
@@ -11,13 +12,11 @@
 
                               <search-book></search-book>
 
-                                    </button>
-                              </div>
-
                         </form>
                   </div>
             </div>
       </div>
+    @endauth
 
       <div class="row row-cols-3">
             @foreach($books as $book)
@@ -27,15 +26,12 @@
                         <div class="card-body">
                               <p class="card-text">{{ $book->name }}</p>
                               <div class="d-flex justify-content-between align-items-center">
+                                    @auth()
                                     <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                                           <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
                                     </div>
-                                    <a href="">
-                                          <span class="material-symbols-outlined">reviews</span>
-                                    </a>
-
-
+                                  @endauth
                               </div>
                         </div>
                   </div>
