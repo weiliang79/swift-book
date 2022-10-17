@@ -32,7 +32,13 @@
                                         @if($order->status === 'fail')
                                             <div class="row">
                                                 <div class="col">
-                                                    <p class="text-center text-danger">Payment Failed, please pay again.</p>
+                                                    <p class="text-center text-danger">Payment Failed, <a href="{{ route('checkout.pay', ['order' => $order->id]) }}">please pay again</a>.</p>
+                                                </div>
+                                            </div>
+                                        @elseif($order->status === 'expired')
+                                            <div class="row">
+                                                <div class="col">
+                                                    <p class="text-center text-danger">Payment Failed.</p>
                                                 </div>
                                             </div>
                                         @endif
@@ -53,6 +59,7 @@
                                                                     <th>ISBN</th>
                                                                     <th>Quantity</th>
                                                                     <th>Price</th>
+                                                                    @if($order->status !== 'fail' && $order->status !== 'expired') <th>Action</th> @endif
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
@@ -62,6 +69,11 @@
                                                                         <td>{{ $book->isbn }}</td>
                                                                         <td>{{ $book->pivot->quantity }}</td>
                                                                         <td>{{ number_format($book->pivot->quantity * $book->price, 2) }}</td>
+                                                                        @if($order->status !== 'fail' && $order->status !== 'expired')
+                                                                        <td>
+                                                                            <a href="{{ route('rating', ['book_id' => $book->id]) }}" class="btn btn-primary">Review</a>
+                                                                        </td>
+                                                                        @endif
                                                                     </tr>
                                                                 @endforeach
                                                             </tbody>
