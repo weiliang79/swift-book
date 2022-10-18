@@ -68,4 +68,8 @@ Route::group(['middleware' => ['can:isAdmin']], function () {
     Route::get('/admin/books/{book_id}/edit', [BookController::class, 'showEditForm'])->name('admin.books.edit');
     Route::post('/admin/books/{book_id}/update', [BookController::class, 'updateBook'])->name('admin.books.update');
     Route::post('/admin/books/delete', [BookController::class, 'deleteBook'])->name('admin.books.delete');
+
+    // order routes
+    Route::get('/admin/orders', [OrderController::class, 'adminIndex'])->name('admin.orders');
+    Route::get('/admin/orders/{order_id}/detail', [OrderController::class, 'adminDetail'])->name('admin.orders.detail');
 });

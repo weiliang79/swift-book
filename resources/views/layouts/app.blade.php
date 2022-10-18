@@ -50,7 +50,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">{{ __('Order') }}</a>
+                            <a class="nav-link" href="{{ route('admin.orders') }}">{{ __('Order') }}</a>
                         </li>
                         @endcan
 
