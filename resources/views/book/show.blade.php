@@ -25,20 +25,48 @@
                                 <p class="fs-5 mb-5">RM {{ $book->price }}</p>
                                
                                 <form>
-                                    <select class="form-select form-select-lg mb-3 "  name="quantity" id="">
-                                        @for($i = 1; $i <= $book->quantity; $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                        @endfor
-                                        
-                                    </select>
-        
-                                    <button type="button" class="btn btn-primary btn-lg col-12">add to cart </button>
+                                    <button type="button" class="btn btn-primary btn-lg col-12">Add to Cart</button>
                                 </form>
                             </li>
                           
                         </ul>
                     </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="card">
+                                <div class="card-header">
+                                    Ratings
+                                </div>
+
+                                <div class="card-body">
+                                    @if($book->ratings()->count() == 0)
+                                        <div class="d-flex justify-content-center">
+                                            No Review Available
+                                        </div>
+                                    @else
+                                        <ul class="list-group">
+                                            @foreach ($book->ratings as $rating)
+                                                <li class="list-group-item">
+                                                    <h6>{{ $rating->user->name }}</h6>
+                                                    <div class="d-flex">
+                                                        <span class="{{ $rating->rating >= 1 ? 'star-color' : '' }}">&#9733;</span>
+                                                        <span class="{{ $rating->rating >= 2 ? 'star-color' : '' }}">&#9733;</span>
+                                                        <span class="{{ $rating->rating >= 3 ? 'star-color' : '' }}">&#9733;</span>
+                                                        <span class="{{ $rating->rating >= 4 ? 'star-color' : '' }}">&#9733;</span>
+                                                        <span class="{{ $rating->rating >= 5 ? 'star-color' : '' }}">&#9733;</span>
+                                                    </div>
+                                                    <p>{{ $rating->comment }}</p>
+                                                </li>
+                                            @endforeach
+                                        </ul>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </main>
