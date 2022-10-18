@@ -116,4 +116,9 @@ class BookController extends Controller
     {
         return view('book.search', ['books' => Book::where('name', 'like', '%' . $request->query('query') . '%')->get()]);
     }
+
+    public function show(Book $book)
+    {
+        return view('book.show', ['book' => $book]);
+    }
 }

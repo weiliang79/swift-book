@@ -28,7 +28,7 @@
                               <div class="d-flex justify-content-between align-items-center">
                                     @auth()
                                     <div class="btn-group">
-                                          <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                          <a class="btn btn-sm btn-outline-secondary" href ="{{ url("/book/{$book->id}") }}">View</a>
                                           <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
                                     </div>
                                   @endauth
