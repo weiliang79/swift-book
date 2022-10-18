@@ -51,6 +51,7 @@ Route::group(['middleware' => ['can:isUser']], function () {
     Route::get('/order_history', [OrderController::class, 'index'])->name('order_history');
 
     Route::get('/rating/{book_id}', [RatingController::class, 'index'])->name('rating');
+    Route::post('/rating/{book_id}/store', [RatingController::class, 'store'])->name('rating.store');
 
 });
 

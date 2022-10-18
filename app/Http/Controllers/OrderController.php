@@ -14,7 +14,7 @@ class OrderController extends Controller
         $orders = Auth::user()->orders()->get();
         
         foreach($orders as $order){
-            $now = Carbon::now()->addHours(4);
+            $now = Carbon::now();
             $temp = $order->updated_at->copy();
             $temp->addHours(3);
             //dd($order, $now, $temp, $now->gt($temp));

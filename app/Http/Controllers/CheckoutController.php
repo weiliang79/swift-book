@@ -150,6 +150,6 @@ class CheckoutController extends Controller
     private function callFakePaymentApi()
     {
         sleep(2);
-        return false;
+        return random_int(0, 1) == 1;
     }
 }
