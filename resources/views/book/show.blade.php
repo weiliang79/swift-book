@@ -24,9 +24,8 @@
                                 <p class="fs-5 mb-5">ISBN: {{ $book->isbn }}</p>
                                 <p class="fs-5 mb-5">RM {{ $book->price }}</p>
                                
-                                <form>
-                                    <button type="button" class="btn btn-primary btn-lg col-12">Add to Cart</button>
-                                </form>
+                                
+                                <button id="addToCartBtn" type="button" class="btn btn-primary btn-lg col-12" onclick="addToCartClicked()" {{ auth()->user()->carts()->where('book_id', $book->id)->count() !== 0 ? 'disabled' : '' }}>Add to Cart</button>
                             </li>
                           
                         </ul>
@@ -70,4 +69,18 @@
             </div>
         </div>
     </main>
+
+    <script>
+        function addToCartClicked(){
+            axios.post('{{ route("cart.add", ["book_id" => $book->id]) }}')
+            .then(response => {
+                alert('Book successful add to cart with ' + response.data.cart.quantity + ' Quantity.');
+                document.getElementById('addToCartBtn').disabled = true;
+            }).catch(error => {
+                console.log(error);
+                //TODO: change error message
+                alert("Error during add to cart.");
+            });
+        }
+    </script>
 @endsection

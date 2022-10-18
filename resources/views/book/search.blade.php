@@ -11,11 +11,8 @@
                               <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                           <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                          <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                                          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCartClicked(this)" data-book-id="{{ $book->id }}" {{ auth()->user()->carts()->where('book_id', $book->id)->count() !== 0 ? 'disabled' : '' }}>Add to cart</button>
                                     </div>
-                                    <a href="">
-                                          <span class="material-symbols-outlined">reviews</span>
-                                    </a>
                               </div>
                         </div>
                   </div>
@@ -23,4 +20,22 @@
             @endforeach
       </div>
 </div>
+
+<script>
+      function addToCartClicked(item){
+            console.log(item.getAttribute('data-book-id'));
+
+            //TODO: check url if wrong
+            axios.post('cart/' + item.getAttribute('data-book-id'))
+            .then(response => {
+                  alert('Book successful add to cart with ' + response.data.cart.quantity + ' Quantity.');
+                  window.location.reload();
+            })
+            .catch(error => {
+                  console.log(error);
+                  //TODO: change error message
+                  alert('Error during add to cart.');
+            });
+      }
+</script>
 @endsection
