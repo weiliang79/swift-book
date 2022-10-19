@@ -52,3 +52,7 @@ Object.entries(import.meta.globEager('./**/*.vue')).forEach(([path, definition])
  */
 
 app.mount('#app');
+
+// fix white page problem
+import './addToCartClicked'
+import './cart'

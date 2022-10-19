@@ -29,7 +29,7 @@
                                     @auth()
                                     <div class="btn-group">
                                           <a class="btn btn-sm btn-outline-secondary" href ="{{ url("/book/{$book->id}") }}">View</a>
-                                          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCartClicked(this)" data-book-id="{{ $book->id }}" {{ auth()->user()->carts()->where('book_id', $book->id)->count() !== 0 ? 'disabled' : '' }}>Add to cart</button>
+                                          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="addToCartClicked('{{ route('cart.add', ['book_id' => $book->id]) }}')" {{ auth()->user()->carts()->where('book_id', $book->id)->count() !== 0 ? 'disabled' : '' }}>Add to cart</button>
                                     </div>
                                   @endauth
                               </div>
@@ -40,23 +40,4 @@
 
       </div>
 </div>
-
-<script>
-      function addToCartClicked(item){
-            console.log(item.getAttribute('data-book-id'));
-
-            //TODO: check url if wrong
-            axios.post('cart/' + item.getAttribute('data-book-id'))
-            .then(response => {
-                  alert('Book successful add to cart with ' + response.data.cart.quantity + ' Quantity.');
-                  window.location.reload();
-            })
-            .catch(error => {
-                  console.log(error);
-                  //TODO: change error message
-                  alert('Error during add to cart.');
-            });
-      }
-</script>
-
 @endsection

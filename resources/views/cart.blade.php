@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @vite('resources\js\cart.js')
     <main class="mx-5">
         <section class="d-flex">
             {{-- left card --}}
