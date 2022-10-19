@@ -26,14 +26,13 @@
                                 <h5 class="mb-0">RM {{ $cart->book->price }}</h5>
 
                                 <div style="width: 2rem"></div>
-
                                 <button style="width: 2rem; height: 2rem; border: none;"
-                                    onclick="decrement(this)">-</button>
+                                    onclick="decrement(this, '{{ url('/') }}')">-</button>
                                 <p type="text" class="text-center" style="width: 3rem;margin: auto">
                                     {{ $cart->quantity }}
                                 </p>
                                 <button style="width: 2rem; height: 2rem; border: none;"
-                                    onclick="increment(this)">+</button>
+                                    onclick="increment(this, '{{ url('/') }}')">+</button>
 
                                 <div style="width: 2rem"></div>
 
