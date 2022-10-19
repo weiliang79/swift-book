@@ -103,6 +103,7 @@ class CartController extends Controller
             return $carry + $price;
         });
         $total = $subtotal + self::SHIPPING_FEE;
-        return [$subtotal, self::SHIPPING_FEE, $total];
+        $numberOfBooks = $user->carts->count();
+        return [$subtotal, self::SHIPPING_FEE, $total, $numberOfBooks];
     }
 }

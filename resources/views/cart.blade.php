@@ -69,7 +69,7 @@
                         <h5 class="mb-0">Order Summary</h5>
                     </div>
                     <div class="card-body fs-5" id="summary-body">
-                        <p class="d-flex justify-content-between">Subtotal (3 books)
+                        <p class="d-flex justify-content-between">Subtotal ({{ $summary[3] }} books)
                             <span>RM {{ number_format($summary[0], 2, '.', '') }}</span>
                         </p>
                         <p class="d-flex justify-content-between">Shipping Fee
