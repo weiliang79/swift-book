@@ -11,7 +11,6 @@ class RatingController extends Controller
     public function index(Request $request)
     {
         $book = Book::find($request->book_id);
-        //dd($book);
 
         return view('rating.index', compact('book'));
     }
@@ -21,7 +20,6 @@ class RatingController extends Controller
         $request->validate([
             'star' => 'required|numeric',
         ]);
-        //dd($request);
 
         $book = Book::find($request->book_id);
         $book->ratings()->create([
