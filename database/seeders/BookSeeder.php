@@ -116,7 +116,7 @@ class BookSeeder extends Seeder
             'isbn' => '9780593484364',
             'price' => '28.5',
             'quantity' => '3',
-            'image_path' => 'images/Why We Need Water (Waffles + Mochi).jpg'
+            'image_path' => 'images/Why We Need Water (Waffles Mochi).jpg'
         ]);
     }
 }
